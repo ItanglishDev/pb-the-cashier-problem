@@ -30,8 +30,6 @@ class ProductManager {
     this.products.push(item)
     // console.log('TOTAL = ', () => );
   }
-
-
 }
 
 class TillManager {
@@ -55,17 +53,36 @@ class TillManager {
 
   }
   total() {
-    console.log(this.till.map((el => Object.values(el))))
-
+    let sum = this.till.reduce((acc, el) => acc + el.price, 0)
+    return sum
   }
 
-
-
-  payment(answer) {
+  paymentMethod(answer) {
 
     if (answer !== 'card') {
       console.log('That\'s perfect');
     } else { console.log('I am sorry we do not accept them'); }
+  }
+
+  payment(amount) {
+
+    let leftOver = 0
+    let amountToSubtract = 0
+
+    let amountOf100 = (sum % 100).toFixed(0)
+    if (amountOf100 > 0) {
+      leftOver = sum -= amountOf100 * 100
+      let amountOf50 = (leftOver % 50).toFixed(0)
+      if (amountOf50 > 0) {
+        leftOver = sum -= amountOf50 * 50
+        let amountOf20 = (leftOver % 20).toFixed(0)
+        if (amountOf20 > 0) {
+          leftOver = sum = - amountOf20 * 20
+        }
+      }
+    }
+
+
   }
 
 
@@ -100,15 +117,12 @@ cashier.buyProduct(banana)
 cashier.buyProduct(banana)
 cashier.buyProduct(pineapple)
 
-console.log("TILL1 ===>", edeka.till);
+// console.log("TILL1 ===>", edeka.till);
 // REMOVE PRODUCT FROM TILL
 cashier.removeProduct(pineapple)
 // console.log(pineapple);
 console.log("TILL2 ===>", edeka.till);
 
-// cashier.payment('cash')
-// console.log(
-//   Object.values(banana));
-
+// cashier.paymentMethod('card')
 // console.log(edeka.products);
-cashier.total()
+console.log(cashier.total());
