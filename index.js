@@ -1,9 +1,10 @@
 class Shop {
 
-  constructor(name, products) {
+  constructor(name, products, till) {
 
     this.name = name
     this.products = products
+    this.till = till
   }
 }
 
@@ -17,21 +18,32 @@ class Product {
   }
 }
 
-class ProductManager extends Product {
+class ProductManager {
+
+  constructor(products) {
+
+    this.products = products
+  }
+
+  addToStore(...item) {
+
+    this.products.push(...item)
+  }
+
+
+}
+
+class Till extends Product {
 
   constructor() {
 
     super()
+    this.order = order
+    this.total = total
   }
 
-  addToStore(productName, price, id) {
+  buyProduct() {
 
-    this.products.push({ productName, price, id })
-  }
 
-  removeFromStore(productName, price, id) {
-
-    delete { productName, price, id }
   }
 }
-
