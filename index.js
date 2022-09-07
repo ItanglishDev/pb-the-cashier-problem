@@ -1,6 +1,6 @@
 class Shop {
 
-  constructor(name, products, till) {
+  constructor(name) {
 
     this.name = name
     this.products = []
