@@ -20,14 +20,14 @@ class Product {
 
 class ProductManager {
 
-  constructor(products) {
+  constructor(product) {
 
-    this.products = products
+    this.product = product
   }
 
   addToStore(item) {
 
-    this.products.push(item)
+    this.product.push(item)
   }
 
 
@@ -53,10 +53,26 @@ class TillManager {
 
 }
 
+// NEW SHOP CREATED
 const edeka = new Shop
-const managingNewProducts = new ProductManager(edeka.products)
-const banana = new Product('Banana', 1, 345)
-const cashier = new TillManager(edeka.till)
-managingNewProducts.addToStore(banana)
 
+// PRODUCT MANAGER CREATED
+const managingNewProducts = new ProductManager(edeka.products)
+
+// PRODUCT CREATED
+const banana = new Product('Banana', 1, 345)
+const pineapple = new Product('Pineapple', 1, 50, 245)
+const apple = new Product('Apple', 0.75, 645)
+const orange = new Product('Orange', 1.2, 347)
+const strawberry = new Product('Strawberry', 2.5, 375)
+
+// ADDING PRODUCTS TO SHOP
+managingNewProducts.addToStore(banana)
+managingNewProducts.addToStore(pineapple)
+managingNewProducts.addToStore(apple)
+managingNewProducts.addToStore(orange)
+managingNewProducts.addToStore(strawberry)
+
+
+const cashier = new TillManager(edeka.till)
 console.log(edeka.products);
