@@ -33,17 +33,16 @@ class ProductManager {
 
 }
 
-class Till extends Product {
+class Till {
 
-  constructor() {
+  constructor(itemName, quantity) {
 
-    super()
-    this.order = order
-    this.total = total
+    this.itemName = itemName
+    this.quantity = quantity
   }
 
-  buyProduct() {
+  buyProduct(itemName, quantity) {
 
-
+    this.till.push(itemName, quantity)
   }
 }
