@@ -3,8 +3,8 @@ class Shop {
   constructor(name, products, till) {
 
     this.name = name
-    this.products = products
-    this.till = till
+    this.products = []
+    this.till = []
   }
 }
 
@@ -20,14 +20,14 @@ class Product {
 
 class ProductManager {
 
-  constructor(product) {
+  constructor(products) {
 
-    this.product = product
+    this.products = products
   }
 
-  addToStore(...item) {
+  addToStore(item) {
 
-    this.products.push(...item)
+    this.products.push(item)
   }
 
 
