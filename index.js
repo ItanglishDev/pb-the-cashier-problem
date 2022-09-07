@@ -20,9 +20,9 @@ class Product {
 
 class ProductManager {
 
-  constructor(products) {
+  constructor(product) {
 
-    this.products = products
+    this.product = product
   }
 
   addToStore(...item) {
@@ -44,5 +44,11 @@ class Till {
   buyProduct(itemName, quantity) {
 
     this.till.push(itemName, quantity)
+
   }
+
+  removeProduct() {
+  }
+
+
 }
