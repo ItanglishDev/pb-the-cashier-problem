@@ -33,7 +33,7 @@ class ProductManager {
 
 }
 
-class Till {
+class TillManager {
 
   constructor(itemName, quantity) {
 
