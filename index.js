@@ -52,3 +52,11 @@ class TillManager {
 
 
 }
+
+const edeka = new Shop
+const managingNewProducts = new ProductManager(edeka.products)
+const banana = new Product('Banana', 1, 345)
+const cashier = new TillManager(edeka.till)
+managingNewProducts.addToStore(banana)
+
+console.log(edeka.products);
