@@ -36,7 +36,7 @@ class TillManager {
 
   constructor(till) {
 
-
+    this.sum = 0
     this.till = till
   }
 
@@ -53,8 +53,8 @@ class TillManager {
 
   }
   total() {
-    let sum = this.till.reduce((acc, el) => acc + el.price, 0)
-    return sum
+    this.sum = this.till.reduce((acc, el) => acc + el.price, 0)
+    return this.sum
   }
 
   paymentMethod(answer) {
@@ -66,14 +66,19 @@ class TillManager {
 
   payment(amount) {
 
-    console.log(`The change to be given is ${amount - total()}, please follow the output to give change:  `);
+    let dueChange = amount - this.sum
+    console.log(dueChange);
     const currency = [200, 100, 50, 20, 10, 5, 1, .5, .2, .1]
 
-    currency.forEach(el = () => {
-      if ((amount % el).toFixed(0) > 0) {
-
-        amount = amount - (amount % el).toFixed(0) * el
-        console.log(`${(amount % el).toFixed(0)} x ${el}€`);
+    // console.log('HERE', (dueChange / 50));
+    // console.log('HERE', (dueChange % 50));
+    currency.forEach(el => {
+      if (dueChange / el > 1) {
+        // console.log("FLOOr", Math.floor(dueChange / el));
+        let value = Math.floor(dueChange / el)
+        // console.log(value);
+        dueChange -= Math.floor(dueChange / el) * el
+        console.log(`${value} x ${el}€`);
       }
 
     })
@@ -118,3 +123,4 @@ console.log("TILL2 ===>", edeka.till);
 // cashier.paymentMethod('card')
 // console.log(edeka.products);
 console.log(cashier.total());
+cashier.payment(100)
