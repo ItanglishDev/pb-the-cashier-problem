@@ -66,63 +66,67 @@ class TillManager {
 
   payment(amount) {
 
-    let leftOver = 0
-    let amountToSubtract = 0
-
+    console.log(`The change to be given is ${amount - total()}, please follow the output to give change:  `);
     const currency = [200, 100, 50, 20, 10, 5, 1, .5, .2, .1]
 
-    currency.forEach(el => console.log((amount % el).toFixed(0)))
+    currency.forEach(el => {
+      if ((amount % el).toFixed(0) > 0) {
+
+        amount = amount - (amount % el).toFixed(0) * el
+        console.log(`${(amount % el).toFixed(0)} ${el} €`);
+      }
 
 
 
-    // let amountOf100 = (sum % 100).toFixed(0)
-    // if (amountOf100 > 0) {
-    //   leftOver = sum -= amountOf100 * 100
-    //   let amountOf50 = (leftOver % 50).toFixed(0)
-    //   if (amountOf50 > 0) {
-    //     leftOver = sum -= amountOf50 * 50
-    //     let amountOf20 = (leftOver % 20).toFixed(0)
-    //     if (amountOf20 > 0) {
-    //       leftOver = sum -= amountOf20 * 20
-    //       let amountOf10 = (leftOver % 10).toFixed(0)
-    //       if (amountOf20 > 0) {
-    //         leftOver = sum -= amountOf10 * 10
-    //         let amountOf5 = (leftOver % 5).toFixed(0)
-    //         if (amountOf5 > 0) {
-    //           leftOver = sum -= amountOf10 * 10
-    //           let amountOf1 = (leftOver % 1).toFixed(0)
-    //           if (amountOf1 > 0) {
-    //             leftOver = sum -= amountOf1
-    //             let amountOf50Cent = (leftOver % .5).toFixed(0)
-    //             if (amountOf50Cent > 0) {
-    //               leftOver = sum -= amountOf50Cent *.5
-    //               let amountOf20Cent = (leftOver % .2).toFixed(0)
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
+
+      // let amountOf100 = (sum % 100).toFixed(0)
+      // if (amountOf100 > 0) {
+      //   leftOver = sum -= amountOf100 * 100
+      //   let amountOf50 = (leftOver % 50).toFixed(0)
+      //   if (amountOf50 > 0) {
+      //     leftOver = sum -= amountOf50 * 50
+      //     let amountOf20 = (leftOver % 20).toFixed(0)
+      //     if (amountOf20 > 0) {
+      //       leftOver = sum -= amountOf20 * 20
+      //       let amountOf10 = (leftOver % 10).toFixed(0)
+      //       if (amountOf20 > 0) {
+      //         leftOver = sum -= amountOf10 * 10
+      //         let amountOf5 = (leftOver % 5).toFixed(0)
+      //         if (amountOf5 > 0) {
+      //           leftOver = sum -= amountOf10 * 10
+      //           let amountOf1 = (leftOver % 1).toFixed(0)
+      //           if (amountOf1 > 0) {
+      //             leftOver = sum -= amountOf1
+      //             let amountOf50Cent = (leftOver % .5).toFixed(0)
+      //             if (amountOf50Cent > 0) {
+      //               leftOver = sum -= amountOf50Cent *.5
+      //               let amountOf20Cent = (leftOver % .2).toFixed(0)
+      //             }
+      //           }
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
 
 
-  }
+    }
 
 
 }
 
-// NEW SHOP CREATED
-const edeka = new Shop
+  // NEW SHOP CREATED
+  const edeka = new Shop
 
-// PRODUCT MANAGER CREATED
-const managingNewProducts = new ProductManager(edeka.products)
+  // PRODUCT MANAGER CREATED
+  const managingNewProducts = new ProductManager(edeka.products)
 
-// PRODUCT CREATED
-const banana = new Product('Banana', 1, 345)
-const pineapple = new Product('Pineapple', 1.50, 245)
-const apple = new Product('Apple', 0.75, 645)
-const orange = new Product('Orange', 1.2, 347)
-const strawberry = new Product('Strawberry', 2.5, 375)
+  // PRODUCT CREATED
+  const banana = new Product('Banana', 1, 345)
+  const pineapple = new Product('Pineapple', 1.50, 245)
+  const apple = new Product('Apple', 0.75, 645)
+  const orange = new Product('Orange', 1.2, 347)
+  const strawberry = new Product('Strawberry', 2.5, 375)
 
 // ADDING PRODUCTS TO SHOP
 managingNewProducts.addToStore(banana)
@@ -131,8 +135,8 @@ managingNewProducts.addToStore(apple)
 managingNewProducts.addToStore(orange)
 managingNewProducts.addToStore(strawberry)
 
-// TILL MANAGER CREATED
-const cashier = new TillManager(edeka.till)
+  // TILL MANAGER CREATED
+  const cashier = new TillManager(edeka.till)
 
 // ADD PRODUCT TO TILL
 cashier.buyProduct(banana)
