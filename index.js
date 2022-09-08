@@ -43,7 +43,7 @@ class TillManager {
   constructor(till) {
 
     this.sum = 0
-    this.till = till
+    this.till = []
   }
 
   buyProduct(...itemName) {
@@ -67,8 +67,8 @@ class TillManager {
   paymentMethod(answer) {
 
     if (answer !== 'card') {
-      console.log('That\'s perfect');
-    } else { console.log('I am sorry we do not accept them'); }
+      console.log('\nThat\'s perfect');
+    } else { console.log('\nI am sorry we do not accept them'); }
   }
 
   payment(amount) {
@@ -159,8 +159,6 @@ function thatQuestion() {
           cashier.buyProduct(el.productName)
         }
       }
-      // let usefulVar = edeka.products.filter(el => el.productName[name]);
-      ;
     }
   )
   console.log(cashier.till);
@@ -179,15 +177,15 @@ function helpQuestion() {
     thatQuestion()
   }
   else {
-
-    cashier.total()
-    // console.clear()
-    // console.log("till", edeka.till);
-    console.log("total", cashier.total());
+    console.clear();
     const cashOrCard = readline.question('Cash or card?')
     cashier.paymentMethod(cashOrCard)
+    console.log('\nTotal amount due is \n'); cashier.total('\n')
+    // console.clear()
+    // console.log("till", edeka.till);
+    // console.log("\nTotal =====>", cashier.total());
 
-    const money = readline.question('How much are you going to pay with?')
+    const money = readline.question('\nHow much are you going to pay with? ')
     cashier.payment(money)
     cashier.till.filter(el => el)
     console.log(cashier.till);
