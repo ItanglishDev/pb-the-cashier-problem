@@ -61,7 +61,7 @@ class TillManager {
   total() {
     const bill = this.sum = this.till.reduce((acc, el) => acc + el.price, 0)
     console.log(bill);
-    return bill
+    // return bill
   }
 
   paymentMethod(answer) {
@@ -154,14 +154,15 @@ function thatQuestion() {
   console.log(shelves)
   readline.question('\nType an item you would like to add to your shopping  ',
     (name) => {
-      for (let el of this.products) {
-        if (el.productName == name) {
-          cashier.buyProduct(el.productName)
-        }
-      }
+      cashier.buyProduct(name)
+      // for (let el of this.products) {
+      //   if (el.productName == name) {
+      //     cashier.buyProduct(el.productName)
+      //   }
+      // }
+
     }
   )
-  console.log(cashier.till);
   helpQuestion()
 }
 
@@ -187,8 +188,8 @@ function helpQuestion() {
 
     const money = readline.question('\nHow much are you going to pay with? ')
     cashier.payment(money)
-    cashier.till.filter(el => el)
-    console.log(cashier.till);
+    // cashier.till.filter(el => el)
+    console.log('till', cashier.till);
   }
   // readline.close()
 }
