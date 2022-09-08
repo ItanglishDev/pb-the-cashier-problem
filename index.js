@@ -67,7 +67,8 @@ class TillManager {
   payment(amount) {
 
     let dueChange = amount - this.sum
-    console.log(dueChange);
+    console.log(`The change due is ${dueChange}€, \nplease follow the next steps to give the correct change:`);
+    console.log(" ");
     const currency = [200, 100, 50, 20, 10, 5, 1, .5, .2, .1]
 
     // console.log('HERE', (dueChange / 50));
@@ -79,6 +80,7 @@ class TillManager {
         // console.log(value);
         dueChange -= Math.floor(dueChange / el) * el
         console.log(`${value} x ${el}€`);
+        console.log(" ");
       }
 
     })
