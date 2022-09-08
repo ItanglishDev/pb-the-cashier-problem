@@ -1,5 +1,9 @@
 // const { clear, log } = require('console')
 
+// const { log } = require('forever');
+const { log } = require('forever');
+const readline = require('readline-sync');
+
 class Shop {
 
   constructor(name) {
@@ -12,11 +16,11 @@ class Shop {
 
 class Product {
 
-  constructor(productName, price, id) {
+  constructor(productName, price) {
 
     this.productName = productName
     this.price = price
-    this.id = id
+    // this.id = id
   }
 }
 
@@ -55,8 +59,9 @@ class TillManager {
 
   }
   total() {
-    this.sum = this.till.reduce((acc, el) => acc + el.price, 0)
-    return this.sum
+    const bill = this.sum = this.till.reduce((acc, el) => acc + el.price, 0)
+    console.log(bill);
+    return bill
   }
 
   paymentMethod(answer) {
@@ -67,7 +72,7 @@ class TillManager {
   }
 
   payment(amount) {
-
+    this.total()
     let dueChange = amount - this.sum
     console.log(`The change due is ${dueChange}€, \nplease follow the next steps to give the correct change:`);
     console.log(" ");
@@ -90,17 +95,18 @@ class TillManager {
 }
 
 // NEW SHOP CREATED
-const edeka = new Shop
+const edeka = new Shop('edeka')
+// console.log('HERE', edeka);
 
 // PRODUCT MANAGER CREATED
 const managingNewProducts = new ProductManager(edeka.products)
 
 // PRODUCT CREATED
-const banana = new Product('Banana', 1, 345)
-const pineapple = new Product('Pineapple', 1.50, 245)
-const apple = new Product('Apple', 0.75, 645)
-const orange = new Product('Orange', 1.2, 347)
-const strawberry = new Product('Strawberry', 2.5, 375)
+const banana = new Product('banana', 1)
+const pineapple = new Product('pineapple', 1.50)
+const apple = new Product('apple', 0.75)
+const orange = new Product('orange', 1.2)
+const strawberry = new Product('strawberry', 2.5)
 
 // ADDING PRODUCTS TO SHOP
 managingNewProducts.addToStore(banana)
@@ -111,10 +117,15 @@ managingNewProducts.addToStore(strawberry)
 
 // TILL MANAGER CREATED
 const cashier = new TillManager(edeka.till)
+console.log(edeka.products);
+
+const shelves = edeka.products.map(el => el.productName)
+// console.log(shelves);
 
 // ADD PRODUCT TO TILL
 // 
-
+// cashier.buyProduct(orange, apple, banana)
+// cashier.total()
 // console.log("TILL1 ===>", edeka.till);
 // REMOVE PRODUCT FROM TILL
 // cashier.removeProduct(pineapple)
@@ -132,62 +143,62 @@ const cashier = new TillManager(edeka.till)
 
 // const { clear, log } = require('console')
 
-const readline = require('readline').createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+// console.clear()
+// console.log();
+// console.log(edeka.products)
 
-readline()
-console.clear()
-console.log('HI, Welcome to the store! How can I help you today?');
-console.log(edeka.products)
+console.log('HI, Welcome to the store! \n\nHow can I help you today?');
 
-
-readline.question('Chose an item you would like to add to your shopping', item => {
-  cashier.buyProduct(item)
-
-})
-
-console.clear()
-questionOne()
-
-function questionOne() {
-
-  readline.question('Anything else I can help you with? (y or n)', answer => {
-    if (answer === y || answer === Y || answer === yes || answer === YES) {
-
-      clear()
-      console.log(edeka.products)
-      readline.question('Chose an item you would like to add to your shopping', item => {
-        cashier.buyProduct(item)
-      })
-
-      questionOne()
+function thatQuestion() {
+  // console.clear()
+  console.log(shelves)
+  readline.question('\nType an item you would like to add to your shopping  ',
+    (name) => {
+      for (let el of this.products) {
+        if (el.productName == name) {
+          cashier.buyProduct(el.productName)
+        }
+      }
+      // let usefulVar = edeka.products.filter(el => el.productName[name]);
+      ;
     }
-    // else {
-    if (answer === n || answer === N || answer === no || answer === NO) {
+  )
+  console.log(cashier.till);
+  helpQuestion()
+}
 
-      clear()
-      console.log(edeka.till);
-      console.log(edeka.total);
+thatQuestion()
 
-      readline.question('Cash or card?', answer => {
-        edeka.paymentMethod(answer)
-      })
+function helpQuestion() {
+  let answerOne = readline.question('\nAnything else I can help you with? (y or n)')
 
-      readline.question('How much are you going to pay with?', answer => {
-        edeka.payment(answer)
-      })
 
-    }
-    // }
-  })
+  if (answerOne === 'y' || answerOne === 'Y') {
+    console.clear()
+    // console.log(shelves)
+    thatQuestion()
+  }
+  else {
+
+    cashier.total()
+    // console.clear()
+    // console.log("till", edeka.till);
+    console.log("total", cashier.total());
+    const cashOrCard = readline.question('Cash or card?')
+    cashier.paymentMethod(cashOrCard)
+
+    const money = readline.question('How much are you going to pay with?')
+    cashier.payment(money)
+    cashier.till.filter(el => el)
+    console.log(cashier.till);
+  }
+  // readline.close()
 }
 
 
 
-console.log('Thanks for shopping with us');
-readline.close()
+// console.log('Thanks for shopping with us');
+// readline.close()
 
 
 
