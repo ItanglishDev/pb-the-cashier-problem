@@ -1,3 +1,5 @@
+const { clear, log } = require('console')
+
 class Shop {
 
   constructor(name) {
@@ -126,3 +128,67 @@ console.log("TILL2 ===>", edeka.till);
 // console.log(edeka.products);
 console.log(cashier.total());
 cashier.payment(100)
+
+
+// ----------------------ADDING NODE READLINE-------------------
+
+
+const readline = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+prompt('HI, Welcome to the store! How can I help you today?');
+console.log(edeka.products)
+
+readline.question('Chose an item you would like to add to your shopping', item => {
+  cashier.buyProduct(item)
+})
+
+clear()
+questionOne()
+
+function questionOne() {
+
+  readline.question('Anything else I can help you with? (y or n)', answer => {
+    if (answer === y || answer === Y || answer === yes || answer === YES) {
+
+      clear()
+      console.log(edeka.products)
+      readline.question('Chose an item you would like to add to your shopping', item => {
+        cashier.buyProduct(item)
+      })
+
+      questionOne()
+    } else {
+
+      if (answer === n || answer === N || answer === no || answer === NO) {
+
+        clear()
+        console.log(edeka.till);
+        console.log(edeka.total);
+
+        readline.question('How will you want to pay?', answer => {
+          edeka.paymentMethod(answer)
+        })
+
+        readline.question('How much are you going to pay with?', answer => {
+          edeka.payment(answer)
+        })
+
+      }
+    }
+  })
+}
+
+
+
+console.log('Thanks for shopping with us');
+readline.close()
+
+
+
+// readline.question(`What's your name?`, name => {
+//   console.log(`Hi ${name}!`);
+//   readline.close();
+// });
