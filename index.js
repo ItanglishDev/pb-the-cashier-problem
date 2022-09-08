@@ -1,4 +1,4 @@
-const { clear, log } = require('console')
+// const { clear, log } = require('console')
 
 class Shop {
 
@@ -113,39 +113,42 @@ managingNewProducts.addToStore(strawberry)
 const cashier = new TillManager(edeka.till)
 
 // ADD PRODUCT TO TILL
-cashier.buyProduct(banana)
-cashier.buyProduct(banana)
-cashier.buyProduct(banana)
-cashier.buyProduct(pineapple)
+// 
 
 // console.log("TILL1 ===>", edeka.till);
 // REMOVE PRODUCT FROM TILL
-cashier.removeProduct(pineapple)
+// cashier.removeProduct(pineapple)
 // console.log(pineapple);
-console.log("TILL2 ===>", edeka.till);
+// console.log("TILL2 ===>", edeka.till);
 
 // cashier.paymentMethod('card')
 // console.log(edeka.products);
-console.log(cashier.total());
-cashier.payment(100)
+// console.log(cashier.total());
+// cashier.payment(100)
 
 
 // ----------------------ADDING NODE READLINE-------------------
 
+
+// const { clear, log } = require('console')
 
 const readline = require('readline').createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-prompt('HI, Welcome to the store! How can I help you today?');
+readline()
+console.clear()
+console.log('HI, Welcome to the store! How can I help you today?');
 console.log(edeka.products)
+
 
 readline.question('Chose an item you would like to add to your shopping', item => {
   cashier.buyProduct(item)
+
 })
 
-clear()
+console.clear()
 questionOne()
 
 function questionOne() {
@@ -160,24 +163,24 @@ function questionOne() {
       })
 
       questionOne()
-    } else {
-
-      if (answer === n || answer === N || answer === no || answer === NO) {
-
-        clear()
-        console.log(edeka.till);
-        console.log(edeka.total);
-
-        readline.question('How will you want to pay?', answer => {
-          edeka.paymentMethod(answer)
-        })
-
-        readline.question('How much are you going to pay with?', answer => {
-          edeka.payment(answer)
-        })
-
-      }
     }
+    // else {
+    if (answer === n || answer === N || answer === no || answer === NO) {
+
+      clear()
+      console.log(edeka.till);
+      console.log(edeka.total);
+
+      readline.question('Cash or card?', answer => {
+        edeka.paymentMethod(answer)
+      })
+
+      readline.question('How much are you going to pay with?', answer => {
+        edeka.payment(answer)
+      })
+
+    }
+    // }
   })
 }
 
