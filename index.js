@@ -69,18 +69,41 @@ class TillManager {
     let leftOver = 0
     let amountToSubtract = 0
 
-    let amountOf100 = (sum % 100).toFixed(0)
-    if (amountOf100 > 0) {
-      leftOver = sum -= amountOf100 * 100
-      let amountOf50 = (leftOver % 50).toFixed(0)
-      if (amountOf50 > 0) {
-        leftOver = sum -= amountOf50 * 50
-        let amountOf20 = (leftOver % 20).toFixed(0)
-        if (amountOf20 > 0) {
-          leftOver = sum = - amountOf20 * 20
-        }
-      }
-    }
+    const currency = [200, 100, 50, 20, 10, 5, 1, .5, .2, .1]
+
+    currency.forEach(el => console.log((amount % el).toFixed(0)))
+
+
+
+    // let amountOf100 = (sum % 100).toFixed(0)
+    // if (amountOf100 > 0) {
+    //   leftOver = sum -= amountOf100 * 100
+    //   let amountOf50 = (leftOver % 50).toFixed(0)
+    //   if (amountOf50 > 0) {
+    //     leftOver = sum -= amountOf50 * 50
+    //     let amountOf20 = (leftOver % 20).toFixed(0)
+    //     if (amountOf20 > 0) {
+    //       leftOver = sum -= amountOf20 * 20
+    //       let amountOf10 = (leftOver % 10).toFixed(0)
+    //       if (amountOf20 > 0) {
+    //         leftOver = sum -= amountOf10 * 10
+    //         let amountOf5 = (leftOver % 5).toFixed(0)
+    //         if (amountOf5 > 0) {
+    //           leftOver = sum -= amountOf10 * 10
+    //           let amountOf1 = (leftOver % 1).toFixed(0)
+    //           if (amountOf1 > 0) {
+    //             leftOver = sum -= amountOf1
+    //             let amountOf50Cent = (leftOver % .5).toFixed(0)
+    //             if (amountOf50Cent > 0) {
+    //               leftOver = sum -= amountOf50Cent *.5
+    //               let amountOf20Cent = (leftOver % .2).toFixed(0)
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
 
 
   }
