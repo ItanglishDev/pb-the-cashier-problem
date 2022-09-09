@@ -1,6 +1,7 @@
 // const { clear, log } = require('console')
 // const { log } = require('forever');
 const { log } = require('forever');
+const { clear } = require('forever/lib/forever/cli');
 const readline = require('readline-sync');
 
 
@@ -43,12 +44,12 @@ class TillManager {
   constructor(till) {
 
     this.sum = 0
-    this.till = []
+    this.till = till
   }
 
-  buyProduct(...itemName) {
+  buyProduct(itemName) {
 
-    this.till.push(...itemName)
+    this.till.push(itemName)
 
   }
 
@@ -59,9 +60,9 @@ class TillManager {
 
   }
   total() {
-    const bill = this.sum = this.till.reduce((acc, el) => acc + el.price, 0)
-    console.log(bill);
-    // return bill
+    let bill = this.till.reduce((acc, el) => acc + el.price, 0)
+
+    return bill
   }
 
   paymentMethod(answer) {
@@ -73,8 +74,8 @@ class TillManager {
 
   payment(amount) {
 
-    this.total()
-    let dueChange = amount - this.sum
+    let dueChange = amount - this.total()
+
     console.log(`The change due is ${dueChange}€, \nplease follow the next steps to give the correct change:`);
     console.log(" ");
     const currency = [200, 100, 50, 20, 10, 5, 1, .5, .2, .1]
@@ -118,7 +119,7 @@ managingNewProducts.addToStore(strawberry)
 
 // TILL MANAGER CREATED
 const cashier = new TillManager(edeka.till)
-console.log(edeka.products);
+// console.log(edeka.products);
 
 const shelves = edeka.products.map(el => el.productName)
 // console.log(shelves);
@@ -148,29 +149,25 @@ const shelves = edeka.products.map(el => el.productName)
 // console.log();
 // console.log(edeka.products)
 
-console.log('HI, Welcome to the store! \n\nHow can I help you today?');
+console.log("\x1b[5m", 'HI, Welcome to the store! \n\nHow can I help you today?');
+
+setTimeout(() => clearInterval(interval), 4000)
 
 function thatQuestion() {
   // console.clear()
   console.log(shelves)
-  readline.question('\nType an item you would like to add to your shopping  ',
-    (name) => {
-      cashier.buyProduct(name)
-      // for (let el of this.products) {
-      //   if (el.productName == name) {
-      //     cashier.buyProduct(el.productName)
-      //   }
-      // }
+  const name = readline.question('\nType an item you would like to add to your shopping ')
 
-    }
-  )
+  edeka.products.forEach(el => { if (el.productName === name) { cashier.buyProduct(el) } })
+
   helpQuestion()
 }
 
 thatQuestion()
 
 function helpQuestion() {
-  let answerOne = readline.question('\nAnything else I can help you with? (y or n)')
+  console.clear()
+  let answerOne = readline.question("\x1b[5m", '\nAnything else I can help you with? (y or n)')
 
 
   if (answerOne === 'y' || answerOne === 'Y') {
@@ -180,17 +177,22 @@ function helpQuestion() {
   }
   else {
     console.clear();
-    const cashOrCard = readline.question('Cash or card?')
+    const cashOrCard = readline.question("\x1b[5m", 'Cash or card?    ')
     cashier.paymentMethod(cashOrCard)
-    console.log('\nTotal amount due is \n'); cashier.total('\n')
-    // console.clear()
+    console.log("\x1b[5m", `\nThat will be ' ${cashier.total()}€`);
     // console.log("till", edeka.till);
+    cashier.total()
+    // console.clear()
     // console.log("\nTotal =====>", cashier.total());
 
-    const money = readline.question('\nHow much are you going to pay with? ')
+    setTimeout(() => clearInterval(interval), 4000)
+    const money = readline.question('\nHow much is given to you?  ')
+    console.log('This is the amount given', money);
     cashier.payment(money)
     // cashier.till.filter(el => el)
-    console.log('till', cashier.till);
+    console.log("\x1b[5m", cashier.till);
+    // Reset = "\x1b[0m"
+    console.log("\x1b[5m", 'Thanks for shopping with us');
   }
   // readline.close()
 }
