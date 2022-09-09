@@ -176,7 +176,7 @@ function helpQuestion() {
   }
   else {
     console.clear();
-    const cashOrCard = readline.question("\x1b[42m" + "\x1b[30m" + "Cash or card?    " + "\x1b[0m")
+    const cashOrCard = readline.question("\x1b[42m" + "\x1b[30m" + "Cash or card?" + "\x1b[0m" + "     ")
     cashier.paymentMethod(cashOrCard)
     // console.clear()
     console.log(cashier.till);
@@ -191,7 +191,7 @@ function helpQuestion() {
     // cashier.till.filter(el => el)
 
     // Reset = "\x1b[0m"
-    console.log("\n                  " + "\x1b[42m" + "\x1b[30m" + "Thanks for shopping with us" + "\x1b[0m");
+    console.log("\n                  " + "\x1b[42m" + "\x1b[30m" + "Thanks for shopping with us" + "\x1b[0m\n");
   }
   // readline.close()
 }
