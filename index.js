@@ -176,7 +176,7 @@ function helpQuestion() {
   }
   else {
     console.clear("\x1b[0m");
-    const cashOrCard = readline.question("\x1b[42m" + "\x1b[30m" + "  Are we paying with cash or card?  " + "\x1b[0m" + "     " + "  (please no capital letters and no spaces    ")
+    const cashOrCard = readline.question("\x1b[42m" + "\x1b[30m" + "  Are we paying with cash or card?  " + "\x1b[0m" + "     " + "  (write card or cash, please no capital letters and no spaces    ")
     cashier.paymentMethod(cashOrCard)
     // console.clear()
     console.log(cashier.till);
