@@ -68,7 +68,7 @@ class TillManager {
   paymentMethod(answer) {
 
     if (answer !== 'card') {
-      console.log('\nThat\'s perfect');
+      console.log('\n' + "\x1b[30m" + "\x1b[42m" + 'That\'s perfect');
     } else { console.log("                " + "\x1b[30m" + "\x1b[42m" + ' \nmmmmhhh, it seems it is not working.... I am sorry but I think we have an issue with the machine' + "\x1b[0m" + "\n"); }
   }
 
@@ -176,7 +176,7 @@ function helpQuestion() {
   }
   else {
     console.clear("\x1b[0m");
-    const cashOrCard = readline.question("\x1b[42m" + "\x1b[30m" + " Cash or card?" + "\x1b[0m" + "     ")
+    const cashOrCard = readline.question("\x1b[42m" + "\x1b[30m" + "  Are we paying with cash or card?  " + "\x1b[0m" + "     " + "  (please no capital letters and no spaces    ")
     cashier.paymentMethod(cashOrCard)
     // console.clear()
     console.log(cashier.till);
