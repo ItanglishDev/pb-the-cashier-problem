@@ -191,7 +191,7 @@ function helpQuestion() {
     // cashier.till.filter(el => el)
 
     // Reset = "\x1b[0m"
-    console.log("\n                  " + "\x1b[42m" + "\x1b[30m" + "Thanks for shopping with us" + "\x1b[0m\n");
+    console.log("\n                  " + "\x1b[42m" + "\x1b[30m" + "  There you go. Thanks for shopping with us!  " + "\x1b[0m\n");
   }
   // readline.close()
 }
