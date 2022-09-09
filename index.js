@@ -150,7 +150,7 @@ const shelves = edeka.products.map(el => el.productName)
 // console.log();
 // console.log(edeka.products)
 
-console.log("====== PLEASE READ THE  " + "\x1b[42m" + "   PARTS   " + "\x1b[0m" + " WITH A FIRM VOICE TO THE CLIENT  ======\n                  \n===>           " + "\x1b[42m" + "\x1b[30m" + "  Hi, Welcome to the store! \n" + "\x1b[0m" + "\n                  \n===>           " + "\x1b[42m" + "\x1b[30m" + "  How can I help you today?\n  " + "\x1b[0m");
+console.log("====== PLEASE READ THE  " + "\x1b[42m" + "   PARTS   " + "\x1b[0m" + " WITH A FIRM VOICE TO THE CLIENT  ======\n                  \n===>           " + "\x1b[42m" + "\x1b[30m" + "  Hi, Welcome to the store! \n" + "\x1b[0m" + "\n                  \n===>           " + "\x1b[42m" + "\x1b[30m" + "  How can I help you today?  \n" + "\x1b[0m");
 
 function thatQuestion() {
   // console.clear()
@@ -166,7 +166,7 @@ thatQuestion()
 
 function helpQuestion() {
   console.clear()
-  let answerOne = readline.question("====== WITH FIRM VOICE TO THE CLIENT  ======\n\n===>     " + "\x1b[42m" + "\x1b[30m" + "Anything else I can help you with? " + "\x1b[0m" + "(y or n)" + "\x1b[0m")
+  let answerOne = readline.question("====== WITH FIRM VOICE TO THE CLIENT  ======\n\n===>     " + "\x1b[42m" + "\x1b[30m" + "  Anything else I can help you with? " + "\x1b[0m" + "  (type y or n, depending on the response)  " + "\x1b[0m")
 
 
   if (answerOne === 'y' || answerOne === 'Y') {
