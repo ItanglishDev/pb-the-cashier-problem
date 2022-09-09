@@ -69,7 +69,7 @@ class TillManager {
 
     if (answer !== 'card') {
       console.log('\n' + "\x1b[30m" + "\x1b[42m" + 'That\'s perfect');
-    } else { console.log("                " + "\x1b[30m" + "\x1b[42m" + ' \nmmmmhhh, it seems it is not working.... I am sorry but I think we have an issue with the machine' + "\x1b[0m" + "\n"); }
+    } else { console.log("\n" + "\x1b[30m" + "\x1b[42m" + '  mmmmhhh, it seems it is not working.... I am so sorry but I think we have an issue with the machine  ' + "\x1b[0m" + "\n"); }
   }
 
   payment(amount) {
