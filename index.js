@@ -69,7 +69,7 @@ class TillManager {
 
     if (answer !== 'card') {
       console.log('\nThat\'s perfect');
-    } else { console.log('\nI am sorry we do not accept them'); }
+    } else { console.log("\x1b[30m" + "\x1b[47m" + ' \n                mmmmhhh, it seems it is not working.... I am sorry but I think we have an issue with the machine' + "\x1b[0m"); }
   }
 
   payment(amount) {
@@ -149,14 +149,12 @@ const shelves = edeka.products.map(el => el.productName)
 // console.log();
 // console.log(edeka.products)
 
-console.log("\x1b[5m", 'HI, Welcome to the store! \n\nHow can I help you today?');
-
-setTimeout(() => clearInterval(interval), 4000)
+console.log("====== WITH FIRM VOICE TO THE CLIENT  ======\n                  \n===>           " + "\x1b[47m" + "\x1b[30m" + "HI, Welcome to the store! \n" + "\x1b[0m" + "\n====== WITH FIRM VOICE TO THE CLIENT  ======\n                  \n===>           " + "\x1b[47m" + "\x1b[30m" + "How can I help you today?\n" + "\x1b[0m");
 
 function thatQuestion() {
   // console.clear()
   console.log(shelves)
-  const name = readline.question('\nType an item you would like to add to your shopping ')
+  const name = readline.question('\nType CORRECTLY the name of the item you would like to add to the client\'s shopping ')
 
   edeka.products.forEach(el => { if (el.productName === name) { cashier.buyProduct(el) } })
 
@@ -167,32 +165,32 @@ thatQuestion()
 
 function helpQuestion() {
   console.clear()
-  let answerOne = readline.question("\x1b[5m", '\nAnything else I can help you with? (y or n)')
+  let answerOne = readline.question("====== WITH FIRM VOICE TO THE CLIENT  ======\n\n===>     " + "\x1b[47m" + "\x1b[30m" + "Anything else I can help you with? " + "\x1b[0m" + "(y or n)" + "\x1b[0m")
 
 
   if (answerOne === 'y' || answerOne === 'Y') {
-    console.clear()
+    console.clear("\x1b[0m")
     // console.log(shelves)
     thatQuestion()
   }
   else {
     console.clear();
-    const cashOrCard = readline.question("\x1b[5m", 'Cash or card?    ')
+    const cashOrCard = readline.question("\x1b[47m" + "\x1b[30m" + "Cash or card?    " + "\x1b[0m")
     cashier.paymentMethod(cashOrCard)
-    console.log("\x1b[5m", `\nThat will be ' ${cashier.total()}€`);
-    // console.log("till", edeka.till);
-    cashier.total()
     // console.clear()
-    // console.log("\nTotal =====>", cashier.total());
+    console.log(cashier.till);
+    console.log(`                 ` + "\x1b[47m" + "\x1b[30m" + `That will be  ${cashier.total()}€` + "\x1b[0m");
+    // console.log("till", edeka.till);
+    // cashier.total()
 
-    setTimeout(() => clearInterval(interval), 4000)
     const money = readline.question('\nHow much is given to you?  ')
-    console.log('This is the amount given', money);
+    // console.log('This is the amount given', money);
+    console.clear()
     cashier.payment(money)
     // cashier.till.filter(el => el)
-    console.log("\x1b[5m", cashier.till);
+
     // Reset = "\x1b[0m"
-    console.log("\x1b[5m", 'Thanks for shopping with us');
+    console.log("\n====== WITH FIRM VOICE TO THE CLIENT  ======\n" + "\x1b[47m" + "\x1b[30m" + "                 Thanks for shopping with us" + "\x1b[0m");
   }
   // readline.close()
 }
