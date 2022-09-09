@@ -69,7 +69,7 @@ class TillManager {
 
     if (answer !== 'card') {
       console.log('\n' + "\x1b[30m" + "\x1b[42m" + 'That\'s perfect');
-    } else { console.log("\n" + "\x1b[30m" + "\x1b[42m" + '  mmmmhhh, it seems it is not working.... I am so sorry but I think we have an issue with the machine  ' + "\x1b[0m" + "\n"); }
+    } else { console.log("\n" + "\x1b[30m" + "\x1b[42m" + '  I am so sorry but I think we have an issue with the machine, I guess it\'s only cash for today  ' + "\x1b[0m" + "\n"); }
   }
 
   payment(amount) {
@@ -89,8 +89,8 @@ class TillManager {
         let value = Math.floor(dueChange / el)
         // console.log(value);
         dueChange -= Math.floor(dueChange / el) * el
-        console.log(`            ${value}x ${el}€`);
-        console.log(" ");
+        console.log("\x1b[33m", "            ", `${value}x ${el}€`, "\x1b[5m");
+        console.log("\x1b[0m", "\n");
       }
 
     })
@@ -150,7 +150,7 @@ const shelves = edeka.products.map(el => el.productName)
 // console.log();
 // console.log(edeka.products)
 
-console.log("====== PLEASE READ THE " + "\x1b[42m" + "  " + "\x1b[0m" + " PARTS WITH A FIRM VOICE TO THE CLIENT  ======\n                  \n===>           " + "\x1b[42m" + "\x1b[30m" + "  Hi, Welcome to the store! \n" + "\x1b[0m" + "\n                  \n===>           " + "\x1b[42m" + "\x1b[30m" + "  How can I help you today?  \n" + "\x1b[0m");
+console.log("====== PLEASE READ THE " + "\x1b[42m" + "  " + "\x1b[0m" + " PARTS WITH A FIRM VOICE TO THE CLIENT  ======\n                  \n===>           " + "\x1b[42m" + "\x1b[30m" + "  Hi, Welcome to the store! \n" + "\x1b[0m" + "\n                  \n           " + "\x1b[42m" + "\x1b[30m" + "  How can I help you today?  \n" + "\x1b[0m");
 
 function thatQuestion() {
   // console.clear()
