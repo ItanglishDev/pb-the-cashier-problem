@@ -1,9 +1,9 @@
 // const { clear, log } = require('console')
-
 // const { log } = require('forever');
 const { log } = require('forever');
 const readline = require('readline-sync');
 
+import chalk from 'chalk';
 class Shop {
 
   constructor(name) {
@@ -86,7 +86,7 @@ class TillManager {
         let value = Math.floor(dueChange / el)
         // console.log(value);
         dueChange -= Math.floor(dueChange / el) * el
-        console.log(`${value} x ${el}€`);
+        console.log(`${chalk.yellow(value)} x ${chalk.green(el)}€`);
         console.log(" ");
       }
 
