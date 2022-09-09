@@ -3,7 +3,7 @@
 const { log } = require('forever');
 const readline = require('readline-sync');
 
-import chalk from 'chalk';
+
 class Shop {
 
   constructor(name) {
@@ -72,6 +72,7 @@ class TillManager {
   }
 
   payment(amount) {
+
     this.total()
     let dueChange = amount - this.sum
     console.log(`The change due is ${dueChange}€, \nplease follow the next steps to give the correct change:`);
@@ -86,7 +87,7 @@ class TillManager {
         let value = Math.floor(dueChange / el)
         // console.log(value);
         dueChange -= Math.floor(dueChange / el) * el
-        console.log(`${chalk.yellow(value)} x ${chalk.green(el)}€`);
+        console.log(`${value} x ${el}€`);
         console.log(" ");
       }
 
