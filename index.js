@@ -150,7 +150,7 @@ const shelves = edeka.products.map(el => el.productName)
 // console.log();
 // console.log(edeka.products)
 
-console.log("====== PLEASE READ THE " + "\x1b[42m" + "  " + "\x1b[0m" + " PARTS WITH A FIRM VOICE TO THE CLIENT  ======\n                  \n===>           " + "\x1b[42m" + "\x1b[30m" + "  Hi, Welcome to the store! \n" + "\x1b[0m" + "\n                  \n           " + "\x1b[42m" + "\x1b[30m" + "  How can I help you today?  \n" + "\x1b[0m");
+console.log("====== PLEASE READ THE " + "\x1b[42m" + "  " + "\x1b[0m" + " PARTS WITH A FIRM VOICE TO THE CLIENT  ======\n                  \n===>           " + "\x1b[42m" + "\x1b[30m" + "  Hi, Welcome to the store! \n" + "\x1b[0m" + "\n                  \n           " + "\x1b[42m" + "\x1b[30m" + "      How can I help you today?  \n" + "\x1b[0m");
 
 function thatQuestion() {
   // console.clear()
