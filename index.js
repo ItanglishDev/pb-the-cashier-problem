@@ -74,12 +74,12 @@ class TillManager {
 
   payment(amount) {
 
-    let dueChange = amount - this.total().toFixed(2)
+    let dueChange = (amount - this.total()).toFixed(2)
     console.log(" ");
     console.log(`               The change due is ${dueChange}€`);
     console.log(" \n               please follow the next steps to give the correct change: \n");
     console.log(" ");
-    const currency = [200, 100, 50, 20, 10, 5, 1, .5, .2, .1, .05]
+    const currency = [200, 100, 50, 20, 10, 5, 1, .5, .2, .1]
 
     // console.log('HERE', (dueChange / 50));
     // console.log('HERE', (dueChange % 50));
@@ -89,7 +89,7 @@ class TillManager {
         let value = Math.floor(dueChange / el)
         // console.log(value);
         dueChange -= Math.floor(dueChange / el) * el
-        console.log("\x1b[33m", "            ", `${value}x ${el}€`, "\x1b[5m");
+        console.log("\x1b[33m", "            ", `${value} x ${el}€`, "\x1b[5m");
         console.log("\x1b[0m", "\n");
       }
 
@@ -107,7 +107,7 @@ const managingNewProducts = new ProductManager(edeka.products)
 // PRODUCT CREATED
 const banana = new Product('banana', 1)
 const pineapple = new Product('pineapple', 1.50)
-const apple = new Product('apple', 0.75)
+const apple = new Product('apple', 0.7)
 const orange = new Product('orange', 1.2)
 const strawberry = new Product('strawberry', 2.5)
 
