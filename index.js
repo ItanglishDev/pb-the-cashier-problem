@@ -68,18 +68,18 @@ class TillManager {
   paymentMethod(answer) {
 
     if (answer !== 'card') {
-      console.log('\n' + "\x1b[30m" + "\x1b[42m" + 'That\'s perfect');
+      console.log('\n' + "\x1b[30m" + "\x1b[42m" + 'That\'s perfect', "\x1b[0m");
     } else { console.log("\n" + "\x1b[30m" + "\x1b[42m" + '  I am so sorry but I think we have an issue with the machine, I guess it\'s only cash for today  ' + "\x1b[0m" + "\n"); }
   }
 
   payment(amount) {
 
-    let dueChange = amount - this.total()
+    let dueChange = amount - this.total().toFixed(2)
     console.log(" ");
     console.log(`               The change due is ${dueChange}€`);
     console.log(" \n               please follow the next steps to give the correct change: \n");
     console.log(" ");
-    const currency = [200, 100, 50, 20, 10, 5, 1, .5, .2, .1]
+    const currency = [200, 100, 50, 20, 10, 5, 1, .5, .2, .1, .05]
 
     // console.log('HERE', (dueChange / 50));
     // console.log('HERE', (dueChange % 50));
