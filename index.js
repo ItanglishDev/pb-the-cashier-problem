@@ -89,7 +89,7 @@ class TillManager {
         let value = Math.floor(dueChange / el)
         // console.log(value);
         dueChange -= Math.floor(dueChange / el) * el
-        console.log("\x1b[33m", "            ", `${value} x ${el}€`, "\x1b[5m");
+        console.log("\x1b[33m", "            ", `               ${value} x ${el}€`, "\x1b[5m");
         console.log("\x1b[0m", "\n");
       }
 
